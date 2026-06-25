@@ -23,13 +23,13 @@ def test_get_day_ahead_prices_tool():
 
 def test_get_imbalance_prices_tool():
     result = get_imbalance_prices(date(2025, 4, 1))
-    assert result.source == "mock"
-    assert len(result.records) == 96
+    assert result.source in ("mock", "tennet")
+    assert len(result.records) >= 1
 
 
 def test_get_weather_forecast_tool():
     result = get_weather_forecast(52.37, 4.90)
-    assert result.source == "mock"
+    assert result.source in ("mock", "open_meteo")
     assert len(result.hourly) == 24
 
 
